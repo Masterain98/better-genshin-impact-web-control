@@ -1,8 +1,12 @@
-# BetterGI Web Cloud Bridge（better-genshin-impact-web-control）
+<p align="center">
+  <img src="public/logo.png" alt="BetterGI Web Cloud Bridge" width="240">
+</p>
 
-让 **BetterGI（better-genshin-impact）** 能够后台驱动 **网页云原神** 的 Chrome 扩展与桥接生态。
+# BetterGI Web Cloud Bridge
 
-网页云原神（<https://ys.mihoyo.com/cloud/#/>）运行在浏览器标签页中，BetterGI 原本无法直接读取其画面或注入操作。本项目提供一个 **Manifest V3 Chrome 扩展**，在用户主动选择的云原神标签页上建立「画面回传 + 输入注入」的双向桥接：BetterGI 侧通过本地回环 WebSocket 接收标准化画面帧，并把键鼠操作经 CDP 注入到该标签页，从而实现对网页云原神的后台自动化控制。
+让 **[BetterGI](https://github.com/babalae/better-genshin-impact)（better-genshin-impact）** 能够后台驱动 **网页云原神** 的 Chrome 扩展与桥接生态。
+
+[网页云原神](https://ys.mihoyo.com/cloud)运行在浏览器标签页中，BetterGI 原本无法直接读取其画面或注入操作。本项目提供一个 **Manifest V3 Chrome 扩展**，在用户主动选择的云原神标签页上建立「画面回传 + 输入注入」的双向桥接：BetterGI 侧通过本地回环 WebSocket 接收标准化画面帧，并把键鼠操作经 CDP 注入到该标签页，从而实现对网页云原神的后台自动化控制。
 
 本仓库同时附带一个零依赖的 **Node 测试台（位于 `demo/`）**，用于在不接入完整 BetterGI 的情况下验证扩展的画面捕获与输入链路。
 
@@ -16,7 +20,7 @@
 | BetterGI 无法操作云原神 | 通过 Chrome DevTools Protocol（CDP）向标签页注入键盘、绝对点击、拖拽、滚轮等输入 |
 | 后台运行与资源占用 | 仅在用户主动绑定的标签页上工作，断线/关闭时幂等释放所有按键与鼠标状态 |
 | 安全与隐私 | 调试权限仅附加到用户选择的标签页，停止会话后立即 detach，不读取历史、不导出 Cookie、不开放远程调试端口 |
-| BGI 只能控制本机运行的云原神 | 桥接通道基于本地回环 WebSocket，BGI 与扩展可部署在不同机器上：将扩展装入远端运行网页云原神的机器，BGI 侧经可控转发连回该机器即可远程驱动非本机的网页云原神（控制端与被控端解耦，互不要求同机） |
+| [BGI](https://github.com/babalae/better-genshin-impact) 只能控制本机运行的云原神 | 桥接通道基于本地回环 WebSocket，BGI 与扩展可部署在不同机器上：将扩展装入远端运行网页云原神的机器，BGI 侧经可控转发连回该机器即可远程驱动非本机的网页云原神（控制端与被控端解耦，互不要求同机） |
 
 ---
 
@@ -150,8 +154,6 @@ pwsh ./script/package-extension.ps1
 
 - 相对鼠标视角控制为实验实现，需在真实云原神页面验证 Pointer Lock 行为。
 - Native Messaging 端口发现与 Token 下发尚未接入，当前使用固定端口 + 可选 Token（Options 配置）。
-- Chrome 窗口最小化下的实际行为需进一步验收。
-- 图标暂未提供（使用 Chrome 默认扩展图标）。
 
 ---
 
