@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BGI Web Cloud Bridge</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <h1>BGI Web Cloud Bridge</h1>
+    <span id="state-badge" class="badge disconnected">未连接</span>
+  </header>
+
+  <section class="grid">
+    <div class="row"><span class="k">BetterGI</span><span id="bgi-conn" class="v">—</span></div>
+    <div class="row"><span class="k">绑定标签页</span><span id="tab" class="v">—</span></div>
+    <div class="row"><span class="k">CDP 输入</span><span id="cdp" class="v">—</span></div>
+    <div class="row"><span class="k">游戏区域</span><span id="viewport" class="v">—</span></div>
+    <div class="row"><span class="k">画面分辨率</span><span id="resolution" class="v">—</span></div>
+    <div class="row"><span class="k">发送帧率</span><span id="fps" class="v">—</span></div>
+    <div class="row"><span class="k">丢弃/缓冲</span><span id="drop" class="v">—</span></div>
+    <div class="row"><span class="k">最近错误</span><span id="error" class="v err">—</span></div>
+  </section>
+
+  <section class="actions">
+    <button id="btn-connect" class="primary">连接 BetterGI</button>
+    <button id="btn-recalibrate">重新校准游戏区域</button>
+    <button id="btn-release" class="warn">停止并释放所有按键</button>
+    <button id="btn-stop" class="danger">断开会话</button>
+  </section>
+
+  <section class="footer">
+    <a id="link-options" href="#">高级设置</a>
+    <a id="link-export" href="#">导出诊断</a>
+  </section>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

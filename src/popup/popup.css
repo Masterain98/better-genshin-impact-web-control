@@ -1,0 +1,87 @@
+:root {
+  --bg: #1e1f22;
+  --panel: #2b2d31;
+  --text: #e6e6e6;
+  --muted: #9aa0a6;
+  --accent: #4f8cff;
+  --ok: #46c37b;
+  --warn: #e0a92e;
+  --danger: #e05a5a;
+  --err: #ff8a8a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 320px;
+  margin: 0;
+  padding: 12px;
+  font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+h1 { font-size: 14px; margin: 0; }
+
+.badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--muted);
+}
+.badge.disconnected { background: #40353a; color: var(--err); }
+.badge.connecting, .badge.capturing, .badge.recovering { background: #40392a; color: var(--warn); }
+.badge.inputready, .badge.running { background: #263f30; color: var(--ok); }
+.badge.suspended { background: #33363c; color: var(--muted); }
+.badge.failed, .badge.stopping { background: #40353a; color: var(--err); }
+
+.grid {
+  background: var(--panel);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+}
+.k { color: var(--muted); }
+.v { font-variant-numeric: tabular-nums; text-align: right; max-width: 190px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.v.err { color: var(--err); }
+
+.actions { display: flex; flex-direction: column; gap: 6px; }
+
+button {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+}
+button:hover { filter: brightness(1.15); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.primary { background: var(--accent); color: #fff; }
+button.warn { background: #4a4026; color: var(--warn); }
+button.danger { background: #4a2e2e; color: var(--danger); }
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.footer a { color: var(--accent); text-decoration: none; font-size: 12px; cursor: pointer; }
+.footer a:hover { text-decoration: underline; }

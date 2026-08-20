@@ -1,0 +1,29 @@
+# ===== 依赖（Node 测试台 demo/） =====
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ===== 构建 / 打包产物 =====
+dist/
+out/
+*.zip
+
+# ===== 运行时日志 / 临时文件 =====
+*.log
+*.tmp
+.cache/
+
+# ===== 本地环境配置 =====
+.env
+.env.local
+
+# ===== 系统 & 编辑器 =====
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# ===== IDE =====
+.idea/
+.vscode/

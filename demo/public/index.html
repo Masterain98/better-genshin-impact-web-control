@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BGI Web Cloud Bridge · 可行性测试台</title>
+  <link rel="stylesheet" href="viewer.css" />
+</head>
+<body>
+  <header>
+    <h1>BGI Web Cloud Bridge · 可行性测试台</h1>
+    <div class="status-line">
+      <span id="ws-badge" class="badge off">测试台未连接</span>
+      <span id="ctrl-badge" class="badge off">控制通道</span>
+      <span id="frame-badge" class="badge off">帧通道</span>
+      <span id="session" class="mono">session: —</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="stage">
+      <div class="canvas-wrap">
+        <canvas id="screen" width="1920" height="1080" tabindex="0"></canvas>
+        <div id="overlay-hint" class="overlay-hint">等待扩展画面帧…<br />请在 Chrome 打开云原神并点击扩展「连接 BetterGI」</div>
+      </div>
+      <div class="stage-meta">
+        <span>画面 <b id="m-fps">0</b> fps</span>
+        <span>seq <b id="m-seq">0</b></span>
+        <span>延迟 <b id="m-age">0</b> ms</span>
+        <span>体积 <b id="m-kb">0</b> KB/s</span>
+        <span>发送指令 <b id="m-inputs">0</b>/s</span>
+        <span>viewport rev <b id="m-rev">0</b></span>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="group">
+        <h2>捕获焦点</h2>
+        <label class="chk"><input type="checkbox" id="kbd-capture" /> 捕获本页键盘 → 转发按键</label>
+        <label class="chk"><input type="checkbox" id="rel-mouse" /> 画面内启用相对鼠标(视角)</label>
+        <p class="hint">点击画面可发送绝对点击；按住拖动发送拖拽；滚轮发送缩放。</p>
+      </div>
+
+      <div class="group">
+        <h2>移动 / 常用键</h2>
+        <div class="keypad">
+          <button class="hold" data-code="KeyW" data-vk="87">W</button>
+          <span></span>
+          <button class="hold" data-code="Space" data-vk="32">空格</button>
+          <button class="hold" data-code="KeyA" data-vk="65">A</button>
+          <button class="hold" data-code="KeyS" data-vk="83">S</button>
+          <button class="hold" data-code="KeyD" data-vk="68">D</button>
+        </div>
+        <div class="keys">
+          <button class="tap" data-code="KeyF" data-vk="70">F</button>
+          <button class="tap" data-code="KeyE" data-vk="69">E</button>
+          <button class="tap" data-code="KeyQ" data-vk="81">Q</button>
+          <button class="tap" data-code="Escape" data-vk="27">Esc</button>
+          <button class="tap" data-code="Digit1" data-vk="49">1</button>
+          <button class="tap" data-code="Digit2" data-vk="50">2</button>
+          <button class="tap" data-code="Digit3" data-vk="51">3</button>
+          <button class="tap" data-code="Digit4" data-vk="52">4</button>
+        </div>
+        <p class="hint">「按住」类按钮支持长按（按下发 down，松开发 up）。</p>
+      </div>
+
+      <div class="group">
+        <h2>会话</h2>
+        <button id="btn-release" class="warn">ReleaseAll（释放所有按键）</button>
+        <button id="btn-clearlog" class="secondary">清空日志</button>
+      </div>
+
+      <div class="group log-group">
+        <h2>日志</h2>
+        <div id="log" class="log"></div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="viewer.js"></script>
+</body>
+</html>

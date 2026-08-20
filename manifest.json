@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "BetterGI Web Cloud Bridge",
+  "version": "0.1.0",
+  "description": "BetterGI 与网页云原神之间的双向桥接：捕获标签页画面并通过 CDP 注入输入。",
+  "minimum_chrome_version": "116",
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "permissions": [
+    "tabCapture",
+    "offscreen",
+    "debugger",
+    "storage",
+    "tabs",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://ys.mihoyo.com/*"
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "BetterGI Web Cloud Bridge"
+  },
+  "options_page": "src/options/options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://ys.mihoyo.com/cloud/*", "https://ys.mihoyo.com/cloud"],
+      "js": ["src/content/content-script.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}
